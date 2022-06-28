@@ -1,0 +1,23 @@
+create table epm_new(emoid number,
+empname varchar2(10),
+salary number(10)
+ );
+ insert into epm_new values(1,'sagar',25000);
+ 
+ insert into epm_new values(2,'siddharth',35000);
+ 
+ insert into epm_new values(3,'aashutosh',20000);
+ select * from epm_new;
+ create table emp_edit(
+ empid number(5),
+ empname VARCHAR2(10),
+ salary number(10)
+ );
+ 
+ create or replACE TRIGGER TR1 After delete on epm_new
+ for each row
+ BEGIN
+    insert into emp_edit values(:old.emoid,:old.empname,:old.salary);
+ End ;
+ delete from epm_new where emoid=1;
+ select * from emp_edit;
